@@ -1,0 +1,47 @@
+seed list for each interaction and one for the main
+interaction data file list
+total number of incident electrons
+Energy of incident electrons
+stdev of energy of incident electrons
+
+Min Energy -- the energy where the program stops tracing the electron
+Boundary potential energy V  -- the energy step at the boundary of the material and the bulk
+
+output file names
+other output info --- maybe some tags to say what info is wanted
+
+
+
+
+Posible different output data files each should be stamped with relivent info: parameters above, date, time
+
+Energy spectra of electrons that leave
+Energy spectra broken down into interaction that started electron
+Energy spectra and Angle
+Charge distribution vs R
+Charge distribution vs z
+All the data -- good for debuging
+Almost all the data -- good for data mining
+
+
+
+Form of input file:
+
+% input file comment
+-s 34 						%seed used for main
+-e AllData_aoUnits.txt 35 	%first interaction file must be Elastic, number is seed used for interaction.
+-i sigma_i_Au.txt 36		%the first inelastic interaction file, number is seed
+
+-n 10000 				%total number of incedent electrons
+-E 900 					%incident electron energy in eV
+-d 10 					%standard deviation of incent electron energy
+
+-m 4 					%The energy where the program no longer tracks electrons again in eV
+-V 5    				%Boundary potential energy V  -- the energy step at the boundary of the material and the bulk
+
+-c Spectra.dat 			%energy spectra file output
+-t spectinter.dat 		%Energy spectra broken down into interaction that started electron
+-a Spectraanlge.dat		%Energy spectra and Angle
+-r rhoVSR.dat			%Charge distribution vs R
+
+

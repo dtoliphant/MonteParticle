@@ -21,7 +21,7 @@ member data
 	inputFile.open(settingFileName.c_str());
 	
 	while (inputFile.eof()){
-		if
+		
  
 	}
 	inputFile.close();
@@ -29,26 +29,26 @@ member data
 
 settings::settings(string settingFileName){
 	//Data types need to be checked
-	double seed = 0.0;
-	string elastic = " ";
-	double seedElastic = 0.0;
-	string inElastic = " ";
-	double seedInElastic = 0.0;
+	seed = 0.0;
+	elastic = " ";
+	seedElastic = 0.0;
+	inElastic = " ";
+	seedInElastic = 0.0;
 
-	double numIncident = 0.0;
-	double incidentEnergy = 0.0;
-	double incidentEnergyDev = 0.0;
+	numIncident = 0.0;
+	incidentEnergy = 0.0;
+	incidentEnergyDev = 0.0;
 
-	double energyThreshold = 0.0;
-	double boundaryEnergy = 0.0;
+	energyThreshold = 0.0;
+	boundaryEnergy = 0.0;
 
 	//Output setting variables
-	string outputFileName = " ";
+	outputFileName = " ";
 
-	bool spectra = false;
-	bool spectraDouble = false;
-	bool angle = false;
-	bool chargeDist = false;
+	spectra = false;
+	spectraDouble = false;
+	angle = false;
+	chargeDist = false;
 }
 
 //getters and setters

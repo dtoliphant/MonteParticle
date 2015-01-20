@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -14,41 +15,72 @@ to a buffer until '%' or the end of the line is reached. The buffer is pushed in
 a vector and then the vector is parsed using a switch statement to populate the
 member data
 --------------------------------------------------------------------------------*/
-/*settings::settings(string settingFileName){
-	char fileBuffer[2048] = " ";
-	char tempBuffer[200] = " ";
+settings::settings(string settingFileName){
 	ifstream inputFile;
-	inputFile.open(settingFileName.c_str());
-	
-	while (inputFile.eof()){
+	inputFile.open(settingFileName);
+	string line;
+	vector<string> container;
+
+	while (getline(inputFile, line)){
+		if (line[0] != '%'&& line.size() > 0)
+			container.push_back(line);
+
+	}
+
+	for (int i = 0; i < container.size(); i++){
+		string temp = container[i];
 		
- 
+		string buffer;
+		istringstream strm;
+		strm.str(temp.substr(3));
+		
+		switch (temp[1]){
+		case 's':
+			strm >> buffer;
+			seed = stod(buffer);
+			strm.clear();
+			break;
+		case 'e':
+			strm >> elastic >> buffer;
+			seedElastic = stod(buffer);
+			strm.clear();
+			break;
+		case 'i':
+			strm >> inElastic >> buffer;
+			seedInElastic = stod(buffer);
+			strm.clear();
+			break;
+		case 'n':
+			strm >> buffer;
+			numIncident = stod(buffer);
+			strm.clear();
+			break;
+		case 'E':
+			strm >> buffer;
+			incidentEnergy = stod(buffer);
+			strm.clear();
+			break;
+		case 'd':
+			strm >> buffer;
+			incidentEnergyDev = stod(buffer);
+			strm.clear();
+			break;
+		case 'm':
+			strm >> buffer;
+			energyThreshold = stod(buffer);
+			strm.clear();
+			break;
+		case 'V':
+			strm >> buffer;
+			boundaryEnergy = stod(buffer);
+			strm.clear();
+			break;
+		default :
+			break;
+		}
+		buffer = " ";
 	}
 	inputFile.close();
-}*/
-
-settings::settings(string settingFileName){
-	//Data types need to be checked
-	seed = 0.0;
-	elastic = " ";
-	seedElastic = 0.0;
-	inElastic = " ";
-	seedInElastic = 0.0;
-
-	numIncident = 0.0;
-	incidentEnergy = 0.0;
-	incidentEnergyDev = 0.0;
-
-	energyThreshold = 0.0;
-	boundaryEnergy = 0.0;
-
-	//Output setting variables
-	outputFileName = " ";
-
-	spectra = false;
-	spectraDouble = false;
-	angle = false;
-	chargeDist = false;
 }
 
 //getters and setters
